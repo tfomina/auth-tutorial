@@ -8,7 +8,7 @@ import "./Login.css";
 const loginUser = async (credentials: {
   username: string;
   password: string;
-}) => {
+}): Promise<{ token: string }> => {
   return fetch("http://localhost:8080/login", {
     method: "POST",
     headers: {
@@ -34,7 +34,7 @@ const Login: React.FC<ILoginProps> = ({ setToken }) => {
 
     if (!username || !password) return;
 
-    const token = await loginUser({ username, password });
+    const { token } = await loginUser({ username, password });
 
     setToken(token);
   };
