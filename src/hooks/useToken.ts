@@ -14,7 +14,12 @@ const useToken = () => {
     setToken(userToken.token);
   };
 
-  return { setToken: saveToken, token };
+  const clearToken = () => {
+    localStorage.removeItem("token");
+    setToken(undefined);
+  };
+
+  return { setToken: saveToken, token, clearToken };
 };
 
 export default useToken;
